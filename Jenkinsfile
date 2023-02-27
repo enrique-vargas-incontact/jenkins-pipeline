@@ -1,20 +1,25 @@
 pipeline {
     agent any
-
+    tools {
+	  maven 'Maven3'
+	}
+	
     stages {
 	
- 
-  stage('Build') {
+  stage('Load Tools') {
     steps {
-
-        echo 'Building..'
-	    bat "javac HelloWorld/HelloWorld.java"
-	    bat "cd HelloWorld"
-	    bat "java HelloWorld"
+      echo 'Loading Tools..'
+	  bat "mvn -version"
+    }
+  }
+  
+  stage('test') {
+    steps {
+      echo 'Testing....'
     }
   }
 
-  stage('Deploy') {
+  stage('deploy') {
     steps {
       echo 'Deploying...'
       echo 'Done!'
