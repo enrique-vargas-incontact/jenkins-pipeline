@@ -31,6 +31,7 @@ pipeline {
   stage('deploy') {
     steps {
       echo 'Deploying...'
+      deploy adapters: [tomcat9(credentialsId: 'c4c9ce6d-1e47-4f4d-b99c-4d1c85e297d5', path: '', url: 'http://localhost:8080')], contextPath: 'webapp', war: '**/*.war'	    
       echo 'Done!'
     }
   }
