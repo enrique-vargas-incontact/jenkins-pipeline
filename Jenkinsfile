@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
 	  maven 'Maven3'
-	  jdk 'jdk-17'
+
 	}
 	
     stages {
@@ -22,11 +22,6 @@ pipeline {
       }
   }
 	    
-  stage('test') {
-    steps {
-      echo 'Testing....'
-    }
-  }
 
   stage('deploy') {
     steps {
