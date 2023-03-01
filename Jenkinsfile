@@ -2,17 +2,26 @@ pipeline {
     agent any
     tools {
 	  maven 'Maven3'
+	  jdk 'jdk-17'
 	}
 	
     stages {
 	
-  stage('Load Tools') {
+  stage('Initialize') {
     steps {
-      echo 'Loading Tools..'
+      echo 'Maven version..'
 	  bat "mvn -version"
     }
   }
   
+  stage('Build') {
+      steps {
+
+        bat 'mvn clean install'
+
+      }
+  }
+	    
   stage('test') {
     steps {
       echo 'Testing....'
